@@ -1,24 +1,78 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Navigate, Route } from "react-router-dom";
+import  {useState} from 'react';
+import "./App.css";
+import CategorySection from "./Components/UI/CategorySection";
+import Header from "./Components/UI/Header";
+import Pdp from "./Components/UI/Pdp";
+import image from "./assets/Image.svg";
+
+
+const productArray = [
+  {
+    photo: image,
+    title: "Apollo Running Short",
+    price: "$50.00",
+    id: '1'
+  },
+  {
+    photo: image,
+    title: "Apollo Running Short",
+    price: "$50.00",
+    id: '1'
+  },
+  {
+    photo: image,
+    title: "Apollo Running Short",
+    price: "$50.00",
+    id: '1'
+  },
+  {
+    photo: image,
+    title: "Apollo Running Short",
+    price: "$50.00",
+    id: '1'
+  },
+  {
+    photo: image,
+    title: "Apollo Running Short",
+    price: "$50.00",
+    id: '1'
+  },
+  {
+      photo: image,
+      title: "Apollo Running Short",
+      price: "$50.00",
+      id: '1'
+    },
+];
+
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+  const [cartItemsAmount, setCartItemsAmount] = useState(0);
+  // const [ricxvi, setRicxvi] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header></Header>
+        <h2>{cartItemsAmount}</h2>
+      <Routes>
+        <Route exact path="/" element={<Navigate to="/WOMEN" />}></Route>
+        <Route exact path=":collection/item/:id" element={<Pdp productArray={productArray} />}></Route>
+        <Route path="*" element={<CategorySection  
+        productArray={productArray} 
+        cartItems={cartItems} 
+        setCartItems={setCartItems}
+        cartItemsAmount={cartItemsAmount} 
+        setCartItemsAmount={setCartItemsAmount}
+         />}></Route>
+      </Routes>
+
+        
+      </div>
+
+    </BrowserRouter>
   );
 }
 
