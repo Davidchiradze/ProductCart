@@ -28,6 +28,8 @@
 }
 .nav-cartsection {
     padding-left: 90px;
+    position: relative;
+    display: flex;
 }
 
 
@@ -37,23 +39,47 @@ border:unset !important;
 
 .arrowicondown{
     position: relative;
+    margin-top:10px;
+
+}
+.arrowiconup{
+    margin-top:10px;
 }
 
 .dropdown{
 position: absolute;
-right: 75px;
-top: 65px;
+// right: 75px;
+top: 25px;
 padding:16px;
 box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
 }
 .dropdown li{
-    padding: 5px 13px;
-    font-family: 'Raleway';
+padding: 5px 13px;
+font-family: 'Raleway';
 font-style: normal;
 font-weight: 500;
 font-size: 18px;
 line-height: 160%;
+width:100px;
   &:hover{
       cursor: pointer;
   }
+}
+
+
+.cartItemsAmount{
+background: #1D1F22;
+border-radius: 60px;
+font-family: Roboto;
+font-weight: 700;
+color:#fff;
+width: 20px;
+height: 20px;
+text-align: center;
+position: absolute;
+top:-4px;
+left:148px;
+}
+.currency-label{
+    display: flex;
 }

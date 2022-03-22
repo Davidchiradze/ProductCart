@@ -23,7 +23,7 @@ const navArr = [
     }
 ]
 
-const Header = () => {
+const Header = ({cartItemsAmount}) => {
     const [dropDownIsValid, setDropDownIsValid] = useState(false);
 
     const handleDropDown=()=>{
@@ -42,20 +42,31 @@ const Header = () => {
       <div>
         <img src={navIcon} alt="navicon" />
       </div>
+      
       <div  className="nav-cartsection">
-      <label htmlFor="currency"><img src={usdCurrency} alt="USD"/></label>
-         {!dropDownIsValid && <img src={arrowIconDown} className="arrowicondown" alt="arrowDown" onClick={handleDropDown}/>}
+      <div>
+        
+      <label className="currency-label" htmlFor="currency"><img src={usdCurrency} alt="USD"/>
+      {!dropDownIsValid && <img src={arrowIconDown} className="arrowicondown" alt="arrowDown" onClick={handleDropDown}/>}
         { dropDownIsValid &&
-         <img src={arrowIconUp} alt = "arrowUp" onClick={handleDropDown}/>         
+         <img className="arrowiconup" src={arrowIconUp} alt = "arrowUp" onClick={handleDropDown}/>         
          } 
+      </label>
+
          {dropDownIsValid && 
          <ul className="dropdown"> 
              <li> $ USD</li>
              <li> € EUR </li>
              <li> ¥ JPY </li>
         </ul>}
-          <img src={cartIcon} alt="cart"/>
-      </div>
+    
+         
+      </div> 
+      <div className="cart-and-quantity">
+        <img src={cartIcon} alt="cart"/>
+        {(cartItemsAmount>0) && <p className="cartItemsAmount">{cartItemsAmount}</p>}  
+        </div>
+        </div>
     </div>
   );
 };

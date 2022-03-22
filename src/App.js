@@ -55,11 +55,15 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header></Header>
-        <h2>{cartItemsAmount}</h2>
+        <Header cartItemsAmount={cartItemsAmount}></Header>
       <Routes>
         <Route exact path="/" element={<Navigate to="/WOMEN" />}></Route>
-        <Route exact path=":collection/item/:id" element={<Pdp productArray={productArray} />}></Route>
+        <Route exact path=":collection/item/:id" element={<Pdp
+        productArray={productArray}
+        cartItemsAmount={cartItemsAmount}      
+        cartItems={cartItems} 
+        setCartItems={setCartItems}
+        setCartItemsAmount={setCartItemsAmount}/>}></Route>
         <Route path="*" element={<CategorySection  
         productArray={productArray} 
         cartItems={cartItems} 
