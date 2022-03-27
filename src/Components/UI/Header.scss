@@ -3,6 +3,10 @@
     justify-content:  space-between;
     padding: 10px 25px;
     margin: 10px 60px;
+    position: sticky; top: 0;
+    z-index: 1000;
+    background-color: #fff;
+    height: auto;
 }
 .nav-list ul{
     display: flex;
@@ -51,6 +55,7 @@ position: absolute;
 // right: 75px;
 top: 25px;
 padding:16px;
+background-color: #fff;
 box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
 }
 .dropdown li{
@@ -60,7 +65,7 @@ font-style: normal;
 font-weight: 500;
 font-size: 18px;
 line-height: 160%;
-width:100px;
+width:60px;
   &:hover{
       cursor: pointer;
   }
@@ -82,4 +87,21 @@ left:148px;
 }
 .currency-label{
     display: flex;
+}
+
+
+.cart-dropdown{
+    
+}
+
+
+.backdrop{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    margin-top:61px;
+    height: 90vh;
+    z-index: 10;
+    background:rgba(0,0,0,0.75)
 }

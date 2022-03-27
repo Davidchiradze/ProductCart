@@ -1,0 +1,79 @@
+
+.cart-dropdown{
+    width: 325px;
+    height: auto;
+    z-index: 100;
+    background-color:#fff;
+    overflow: hidden;
+    position: absolute;
+    top:40px;
+    right:0px;
+    padding:10px;
+}
+.backdrop{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    margin-top:59px;
+    height: 100vh;
+    z-index: 10;
+    background: rgba(57, 55, 72, 0.22);
+}
+.bag-quantity{
+    font-family: Raleway;
+    font-weight: 700;
+}
+
+
+.cart-dropdown ul li{
+    width: 293px;
+    height: auto;
+    display: flex;
+    border-bottom: 1px solid #000;
+    padding-top: 15px;
+}
+
+
+.cart-product-photo{
+    width:105px;
+    height: 137px;
+}
+
+.cart-product-size {
+    display: flex;
+>span{
+    border: 1px solid #000;
+    width: 24px;
+    text-align: center;
+    padding: 6px;
+    margin-left: 8px;
+}
+}
+.plus-minus{display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    height: 135px;
+}
+
+.cart-product-box{
+    display: flex;
+    flex-direction: column;
+    >h3{
+        font-family: Raleway;
+        font-weight: 300;
+    }
+}
+.cart-product-price{
+    font-family: Raleway;
+    font-weight: 500;
+}
+.total-amount{
+    display: flex;
+    justify-content: space-between;
+    >span{
+        font-family: Roboto;
+        font-weight: 500;
+    }
+}
