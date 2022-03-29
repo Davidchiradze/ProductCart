@@ -23,7 +23,7 @@ const navArr = [
   },
 ];
 
-const Header = ({ cartItemsAmount,cartItemsArray,cartProductQuantity,setCartProductQuantity }) => {
+const Header = ({ cartItemsAmount,cartItemsArray,cartProductQuantity,setCartProductQuantity,totalAmount,setTotalAmount,summingTotalAmount }) => {
   const [dropDownIsValid, setDropDownIsValid] = useState(false);
   const [cartDropdown, setCartDropdown] = useState(false);
   const handleDropDown = () => {
@@ -48,8 +48,8 @@ const Header = ({ cartItemsAmount,cartItemsArray,cartProductQuantity,setCartProd
      
       <div className="nav-list">
         <ul>
-          {navArr.map((nav) => (
-            <NavLink to={nav.to} activeclassname={"active"} className="nav-li">
+          {navArr.map((nav, index) => (
+            <NavLink to={nav.to} activeclassname={"active"} className="nav-li" key={index}>
               {" "}
               {nav.name}{" "}
             </NavLink>
@@ -66,6 +66,9 @@ const Header = ({ cartItemsAmount,cartItemsArray,cartProductQuantity,setCartProd
       cartItemsArray={cartItemsArray}
       cartProductQuantity={cartProductQuantity}
       setCartProductQuantity={setCartProductQuantity}
+      totalAmount={totalAmount}
+      setTotalAmount={setTotalAmount}
+      summingTotalAmount={summingTotalAmount}
       />}
         <div>
           <label className="currency-label" htmlFor="currency">

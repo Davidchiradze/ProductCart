@@ -5,7 +5,7 @@ import './Pdp.scss'
 
 const sizes  = ['XS', 'S', 'M', 'L']
 
-const Pdp = ({productArray,cartItems,setCartItems,setCartItemsAmount,cartItemsArray,setCartItemsArray}) => {
+const Pdp = ({productArray,cartItems,setCartItems,setCartItemsAmount,addToCart,setCartItemsArray}) => {
     
     const { id } = useParams();
     const [chosenSize, setChosenSize] = useState('S')
@@ -13,18 +13,6 @@ const Pdp = ({productArray,cartItems,setCartItems,setCartItemsAmount,cartItemsAr
     // console.log(chosenProd);
     const photos = [chosenProd.photo,chosenProd.photo,chosenProd.photo];
     const [chosenPhoto, setChosenPhoto] =  useState (photos[0]);
-
-    const handleClick=(id,photo,title,price)=>{
-        setCartItemsAmount(prev => {
-            let nextState = prev
-            if(!cartItems.includes(id)){
-              setCartItems(prev=> [...prev,id])
-              setCartItemsArray(prev=>[...prev,{id,photo,title,price}])
-            nextState++
-            }
-            return nextState
-          })
-    }
 
     return (
         <React.Fragment>
@@ -51,7 +39,7 @@ const Pdp = ({productArray,cartItems,setCartItems,setCartItemsAmount,cartItemsAr
                 </ul>
                 <label>PRICE:</label>
                 <span>{chosenProd.price}</span>
-                <button onClick={()=>handleClick(chosenProd.id,chosenPhoto,chosenProd.title,chosenProd.price)}> ADD TO CART </button>
+                <button onClick={()=>addToCart(chosenProd.id)}> ADD TO CART </button>
                 <p>Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.</p>
             </div>
             </div>
