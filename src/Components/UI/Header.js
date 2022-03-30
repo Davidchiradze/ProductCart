@@ -23,7 +23,7 @@ const navArr = [
   },
 ];
 
-const Header = ({ cartItemsAmount,cartItemsArray,cartProductQuantity,setCartProductQuantity,totalAmount,setTotalAmount,summingTotalAmount }) => {
+const Header = ({ cartItemsAmount,setCartItemsArray,cartItemsArray,cartProductQuantity,setCartProductQuantity,totalAmount,setTotalAmount,summingTotalAmount }) => {
   const [dropDownIsValid, setDropDownIsValid] = useState(false);
   const [cartDropdown, setCartDropdown] = useState(false);
   const handleDropDown = () => {
@@ -62,6 +62,7 @@ const Header = ({ cartItemsAmount,cartItemsArray,cartProductQuantity,setCartProd
 
       <div className="nav-cartsection">
       {cartDropdown && <CartModal 
+      setCartItemsArray={setCartItemsArray}
       setCartDropdown={setCartDropdown}
       cartItemsArray={cartItemsArray}
       cartProductQuantity={cartProductQuantity}

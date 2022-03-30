@@ -6,31 +6,37 @@ import { NavLink } from "react-router-dom";
 
 
 
-const CartModal = ({cartItemsArray,setCartDropdown,cartProductQuantity,setCartProductQuantity,totalAmount,summingTotalAmount}) => {
+const CartModal = ({cartItemsArray,setCartItemsArray,setCartDropdown,cartProductQuantity,setCartProductQuantity,totalAmount,summingTotalAmount}) => {
+console.log("🚀 ~ file: CartModal.js ~ line 10 ~ CartModal ~ totalAmount", totalAmount)
     const closeModalHandler=()=>{
       setCartDropdown(false);
     }
 
-    const handleQuantityChange=(action, item)=>{
+    const handleQuantityChange=(action, item, e)=>{
+      e.preventDefault();
       if(action===1){
         setCartProductQuantity(prev => ({
           ...prev,
           [item.id]: prev[item.id] + 1
         }))
 
-        summingTotalAmount();
+        summingTotalAmount(item.price);
       }
       else {
+        summingTotalAmount(-item.price)
+        setCartProductQuantity(prev=>{
+          if  (prev[item.id]===1){
+            setCartItemsArray(prevArr=>prevArr.filter(element=>element.id!==item.id))
+          }
 
-        setCartProductQuantity(prev=>({
+          return{
           ...prev,
           [item.id]: prev[item.id] ? (prev[item.id] - 1) : 0
-        }));
-      }
+          
+        }});
 
-   
-      // console.log(cartProductQuantity.item.id)
-      
+  
+      }
     }
 
   const ModalDropDown = () => {
@@ -56,9 +62,9 @@ const CartModal = ({cartItemsArray,setCartDropdown,cartProductQuantity,setCartPr
 
             </div>
            <div className="plus-minus">
-              <img src={plusSquare} alt="plus" onClick={()=>handleQuantityChange(1, item)}/>
+              <img src={plusSquare} alt="plus" onClick={(e)=>handleQuantityChange(1, item, e)}/>
               <p>{cartProductQuantity[item.id]}</p>
-              <img src={minusSquare} alt="minus" onClick={()=>handleQuantityChange(0, item)}/>
+              <img src={minusSquare} alt="minus" onClick={(e)=>handleQuantityChange(0, item, e)}/>
            </div>
         <div>
              <img className="cart-product-photo" src={item.photo} alt="product-photo"/>
@@ -74,7 +80,7 @@ const CartModal = ({cartItemsArray,setCartDropdown,cartProductQuantity,setCartPr
        {cartItemsArray.length>0 &&
          <div className="total-amount">
            <span>Total</span>
-           <span>${totalAmount}</span>
+           <span>${totalAmount.toFixed(2)}</span>
          </div>}  
           <NavLink to={'/bag'}>VIEW BAG</NavLink>
           <NavLink to={'/checkout'}>CHECK OUT</NavLink>

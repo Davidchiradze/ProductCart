@@ -9,6 +9,8 @@
     top:40px;
     right:0px;
     padding:10px;
+    max-height: 500px;
+    overflow: auto;
 }
 .backdrop{
     position: fixed;

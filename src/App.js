@@ -31,19 +31,19 @@ const productArray = [
     photo: image,
     title: "Apollo Running Short",
     price: "50.00",
-    id: '1'
+    id: '4'
   },
   {
     photo: image,
     title: "Apollo Running Short",
     price: "50.00",
-    id: '1'
+    id: '5'
   },
   {
       photo: image,
       title: "Apollo Running Short",
       price: "50.00",
-      id: '1'
+      id: '6'
     },
 ];
 
@@ -52,18 +52,12 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [cartItemsArray,setCartItemsArray] = useState([]);
   const [cartProductQuantity, setCartProductQuantity] = useState({});
-  const [totalAmount,setTotalAmount] = useState("50.00");
+  const [totalAmount,setTotalAmount] = useState(0);
 
 
 
-const summingTotalAmount =(id)=>{
-  
-  cartItemsArray.map((item)=>{
-    console.log(item.price);  
-
-      setTotalAmount(prev=>Number(prev)+Number(item.price))   
-    
-  })
+const summingTotalAmount =(price)=>{
+      setTotalAmount(prev=> Number(prev) + Number(price))   
 }
 
   const addToCart = (id, e) => {
@@ -80,12 +74,13 @@ const summingTotalAmount =(id)=>{
     }));
 
     setCartItemsArray((prevArr) => !shouldadd ? [...prevArr, itemToAdd] : prevArr) 
-    summingTotalAmount(id);
+    summingTotalAmount(shouldadd?.price || itemToAdd.price);
   };
   return (
     <BrowserRouter>
       <div className="App">
         <Header
+        setCartItemsArray={setCartItemsArray}
          cartItemsAmount={cartItemsArray.length}
          cartItemsArray={cartItemsArray}
          cartProductQuantity={cartProductQuantity}
