@@ -51,8 +51,10 @@ const productArray = [
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [cartItemsArray,setCartItemsArray] = useState([]);
+  console.log("🚀 ~ file: App.js ~ line 54 ~ App ~ cartItemsArray", cartItemsArray)
   const [cartProductQuantity, setCartProductQuantity] = useState({});
   const [totalAmount,setTotalAmount] = useState(0);
+  const [chosenSize, setChosenSize] = useState('S');
 
 
 
@@ -60,22 +62,25 @@ const summingTotalAmount =(price)=>{
       setTotalAmount(prev=> Number(prev) + Number(price))   
 }
 
-  const addToCart = (id, e) => {
+  const addToCart = (id, e,size) => {
     e?.preventDefault();
-
-    const shouldadd = cartItemsArray.find(item1 => item1.id === id);
+    // id=id+'-'+size;
+    console.log(size);
+    const shouldadd = cartItemsArray.find(item1 => item1.id === id+'-'+size);
     let itemToAdd
 
-    if (!shouldadd) itemToAdd = productArray.find(item1 => item1.id === id)
+    if (!shouldadd) itemToAdd = Object.assign({}, productArray.find(item1 => (item1.id)  === id))
 
     setCartProductQuantity((prevQuantity) => ({
       ...prevQuantity,
-      [id]: prevQuantity[id] ? prevQuantity[id] + 1 : 1,
+      [id + '-' + size]: prevQuantity[id+'-'+size] ? prevQuantity[id+'-'+size] + 1 : 1,
     }));
 
+    itemToAdd.id = itemToAdd.id + '-' + size
     setCartItemsArray((prevArr) => !shouldadd ? [...prevArr, itemToAdd] : prevArr) 
     summingTotalAmount(shouldadd?.price || itemToAdd.price);
   };
+  
   return (
     <BrowserRouter>
       <div className="App">
@@ -88,6 +93,8 @@ const summingTotalAmount =(price)=>{
          totalAmount={totalAmount}
          setTotalAmount={setTotalAmount}
          summingTotalAmount={summingTotalAmount}
+         chosenSize={chosenSize}
+         setChosenSize={setChosenSize}
          >
          </Header>
       <Routes>
@@ -102,6 +109,9 @@ const summingTotalAmount =(price)=>{
         setCartItems={setCartItems}
         totalAmount={totalAmount}
         setTotalAmount={setTotalAmount}
+        chosenSize={chosenSize}
+        setChosenSize={setChosenSize}
+
         />}></Route>
         <Route path="*" element={<CategorySection  
         addToCart={addToCart}

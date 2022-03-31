@@ -5,8 +5,6 @@ import { NavLink } from "react-router-dom";
 
 const CategorySection = ({
   productArray,
-  setCartItemsArray,
-  setCartProductQuantity,
   addToCart
 }) => {
 
@@ -29,7 +27,7 @@ const CategorySection = ({
                   className="greencart"
                   src={GreenCart}
                   alt="GrenCart"
-                  onClick={(e) => addToCart(item.id, e)}
+                  onClick={(e,size) => addToCart(item.id,e,size='M')}
                 />
               </div>
             </NavLink>

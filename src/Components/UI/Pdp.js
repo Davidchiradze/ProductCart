@@ -5,12 +5,11 @@ import './Pdp.scss'
 
 const sizes  = ['XS', 'S', 'M', 'L']
 
-const Pdp = ({productArray,cartItems,setCartItems,setCartItemsAmount,addToCart,setCartItemsArray}) => {
+const Pdp = ({productArray,chosenSize,setChosenSize,addToCart,setCartItemsArray}) => {
     
     const { id } = useParams();
-    const [chosenSize, setChosenSize] = useState('S')
     const chosenProd = productArray.find(item => item.id === id)
-    // console.log(chosenProd);
+    console.log("🚀 ~ file: Pdp.js ~ line 12 ~ Pdp ~ chosenProd", chosenProd, id, productArray)
     const photos = [chosenProd.photo,chosenProd.photo,chosenProd.photo];
     const [chosenPhoto, setChosenPhoto] =  useState (photos[0]);
 
@@ -39,7 +38,7 @@ const Pdp = ({productArray,cartItems,setCartItems,setCartItemsAmount,addToCart,s
                 </ul>
                 <label>PRICE:</label>
                 <span>{chosenProd.price}</span>
-                <button onClick={()=>addToCart(chosenProd.id)}> ADD TO CART </button>
+                <button onClick={(e)=>addToCart(chosenProd.id,e,chosenSize)}> ADD TO CART </button>
                 <p>Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.</p>
             </div>
             </div>

@@ -44,12 +44,17 @@
 
 .cart-product-size {
     display: flex;
+    .active{
+        background-color: #000;
+        color:#fff;
+    }
 >span{
     border: 1px solid #000;
     width: 24px;
     text-align: center;
     padding: 6px;
     margin-left: 8px;
+    
 }
 }
 .plus-minus{display: flex;

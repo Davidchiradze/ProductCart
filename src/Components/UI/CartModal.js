@@ -6,8 +6,10 @@ import { NavLink } from "react-router-dom";
 
 
 
-const CartModal = ({cartItemsArray,setCartItemsArray,setCartDropdown,cartProductQuantity,setCartProductQuantity,totalAmount,summingTotalAmount}) => {
-console.log("🚀 ~ file: CartModal.js ~ line 10 ~ CartModal ~ totalAmount", totalAmount)
+const sizes = ['S','M'];
+
+const CartModal = ({cartItemsArray,setCartItemsArray,setCartDropdown,cartProductQuantity,setCartProductQuantity,totalAmount,summingTotalAmount,chosenSize,setChosenSize}) => {
+
     const closeModalHandler=()=>{
       setCartDropdown(false);
     }
@@ -39,10 +41,11 @@ console.log("🚀 ~ file: CartModal.js ~ line 10 ~ CartModal ~ totalAmount", tot
       }
     }
 
-  const ModalDropDown = () => {
-
-    return (
-        <div className="cart-dropdown">
+ 
+  return (
+    <React.Fragment>  
+            <div className="backdrop" onClick={closeModalHandler}/>
+            <div className="cart-dropdown">
           {/* <span style={{fontfamily:'Raleway'}} >My Bag,</span>
           <span style={{fontfamily:'Raleway'}}>{numberOfItems} items</span> */}
           <h2 className="bag-quantity">My Bag, {cartItemsArray.length}Items</h2>
@@ -56,8 +59,9 @@ console.log("🚀 ~ file: CartModal.js ~ line 10 ~ CartModal ~ totalAmount", tot
                   <h3>{item.title}</h3>
                   <span className="cart-product-price">{item.price}</span>
                   <div className="cart-product-size">
-                  <span>S</span>
-                  <span>M</span>
+                  
+         <span>{item.id.split('-')[1]}</span>
+        
                   </div>
 
             </div>
@@ -86,20 +90,6 @@ console.log("🚀 ~ file: CartModal.js ~ line 10 ~ CartModal ~ totalAmount", tot
           <NavLink to={'/checkout'}>CHECK OUT</NavLink>
       
       </div>
-
-
-    
-    )
-
-
-
-  };
-
- 
-  return (
-    <React.Fragment>  
-            <div className="backdrop" onClick={closeModalHandler}/>
-            <ModalDropDown/>
     </React.Fragment>
   );
 };

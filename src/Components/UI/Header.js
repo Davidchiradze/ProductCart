@@ -23,7 +23,7 @@ const navArr = [
   },
 ];
 
-const Header = ({ cartItemsAmount,setCartItemsArray,cartItemsArray,cartProductQuantity,setCartProductQuantity,totalAmount,setTotalAmount,summingTotalAmount }) => {
+const Header = ({ cartItemsAmount,setCartItemsArray,cartItemsArray,cartProductQuantity,setCartProductQuantity,totalAmount,setTotalAmount,summingTotalAmount,chosenSize,setChosenSize }) => {
   const [dropDownIsValid, setDropDownIsValid] = useState(false);
   const [cartDropdown, setCartDropdown] = useState(false);
   const handleDropDown = () => {
@@ -39,7 +39,6 @@ const Header = ({ cartItemsAmount,setCartItemsArray,cartItemsArray,cartProductQu
       setDropDownIsValid(false);
     }
   };
-
   return (
     
     <React.Fragment>
@@ -70,6 +69,8 @@ const Header = ({ cartItemsAmount,setCartItemsArray,cartItemsArray,cartProductQu
       totalAmount={totalAmount}
       setTotalAmount={setTotalAmount}
       summingTotalAmount={summingTotalAmount}
+      chosenSize={chosenSize}
+      setChosenSize={setChosenSize}
       />}
         <div>
           <label className="currency-label" htmlFor="currency">
